@@ -1,0 +1,35 @@
+<div class="form-group">
+    <input type="text" name="sasi" class="form-control" placeholder="Search By Brewerie Name" style="width:300px"
+        [(ngModel)]="searchTerm" />
+</div>
+<div class="brewery-data" *ngIf="disableDataView; else errorMessageView">
+    <table class="table table-striped table-bordered example" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>TYPE</th>
+                <th>PHONENUMBER</th>
+                <th>CITY</th>
+                <th>STATE</th>
+                <th>COUNTRY</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let brewery of filteredBreweries">
+                <td>{{brewery.id}}</td>
+                <td>{{brewery.name}}</td>
+                <td>{{brewery.brewery_type}}</td>
+                <td>{{brewery.phone}}</td>
+                <td>{{brewery.city}}</td>
+                <td>{{brewery.state}}</td>
+                <td>{{brewery.country}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #errorMessageView>
+    <p>Apologize for the inconvenience!! Public API is down for below reason </p>
+    <p style="color:red;">{{errorMessage}}</p>
+</ng-template>
